@@ -3,7 +3,7 @@ import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getAuth as getAdminAuth } from 'firebase-admin/auth';
 import { createUser } from '../../../../lib/firestore';
 import { sendAdminCredentials } from '../../../../lib/emailService';
-
+import { getUserById } from '../../../../lib/firestore';
 // Initialize Firebase Admin
 if (getApps().length === 0) {
   // For development, use the default credentials
@@ -53,7 +53,7 @@ export async function POST(request) {
     }
 
     // Check if requester is super admin
-    const { getUserById } = require('../../../../lib/firestore');
+
     const requester = await getUserById(decodedToken.uid);
 
     if (!requester || requester.role !== 'super_admin') {

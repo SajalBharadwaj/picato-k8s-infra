@@ -36,11 +36,17 @@ export default function Navbar() {
               >
                 Menu
               </Link>
+              <Link
+                href="/about"
+                className="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                About Us
+              </Link>
             </div>
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            {currentUser && userRole === 'customer' && (
+            {currentUser && (userRole === 'customer' || userRole === 'admin') && (
               <Link
                 href="/cart"
                 className="relative text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium"

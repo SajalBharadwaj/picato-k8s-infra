@@ -52,11 +52,23 @@ export default function MenuPage() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+        <div className="relative bg-primary-900 py-24 h-[50vh] overflow-hidden">
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576402187878-974f70c890a5?q=80&w=1333&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+          Our Delicious <span className="text-primary-400">Menu</span>
+        </h1>
+        <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          Explore our wide variety of mouth-watering burgers, pizzas, and sides. Made with fresh ingredients and served
+          with love.
+        </p>
+      </div>
+    </div>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-4xl font-bold text-center mb-8">Our Menu</h1>
-
+       
         {showSuccess && (
           <div className="fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in">
             Added to cart successfully!

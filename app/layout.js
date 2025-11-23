@@ -1,6 +1,8 @@
 import './globals.css';
 import { AuthProvider } from '../context/AuthContext';
 import { CartProvider } from '../context/CartContext';
+import Navbar from '../components/Navbar';
+import Footer from '../components/sections/footer';
 
 export const metadata = {
   title: 'PICATO - Food Ordering',
@@ -13,7 +15,9 @@ export default function RootLayout({ children }) {
       <body>
         <AuthProvider>
           <CartProvider>
+            <Navbar />
             {children}
+            <Footer />
           </CartProvider>
         </AuthProvider>
       </body>

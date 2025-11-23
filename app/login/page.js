@@ -65,7 +65,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+   
 
       <div className="max-w-md mx-auto px-4 py-16">
         <div className="bg-white rounded-lg shadow-md p-8">

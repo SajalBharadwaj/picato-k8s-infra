@@ -22,7 +22,7 @@ function CartPageContent() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-4xl font-bold mb-8">Shopping Cart</h1>
@@ -94,7 +94,7 @@ function CartPageContent() {
 
 export default function CartPage() {
   return (
-    <ProtectedRoute requiredRole="customer">
+   <ProtectedRoute requiredRole={['customer', 'admin']}>
       <CartPageContent />
     </ProtectedRoute>
   );
