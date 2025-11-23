@@ -11,7 +11,7 @@ function OrderSuccessContent() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+
 
       <main className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <div className="bg-white rounded-lg shadow-md p-8">

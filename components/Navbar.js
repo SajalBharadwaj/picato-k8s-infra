@@ -139,6 +139,12 @@ export default function Navbar() {
             >
               Menu
             </Link>
+            <Link
+              href="/about"
+              className="block text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium"
+            >
+              About Us
+            </Link>
             {currentUser && userRole === 'customer' && (
               <Link
                 href="/cart"

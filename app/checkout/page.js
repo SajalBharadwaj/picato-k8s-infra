@@ -125,7 +125,7 @@ function CheckoutPageContent() {
   if (cartItems.length === 0) {
     return (
       <div className="min-h-screen">
-        <Navbar />
+        
         <div className="max-w-4xl mx-auto px-4 py-16 text-center">
           <p className="text-xl text-gray-600 mb-4">Your cart is empty</p>
           <a
@@ -141,7 +141,7 @@ function CheckoutPageContent() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-4xl font-bold mb-8">Checkout</h1>
