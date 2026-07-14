@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: picato-pvc
+  namespace: picato-prod  
+  labels:
+    app: picato
+  annotations:
+    volume.beta.kubernetes.io/storage-provisioner: "kubernetes.io/no-provisioner"
+spec:
+  storageClassName: manual # Yeh exact matching PV se connect karega
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

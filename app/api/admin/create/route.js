@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'; // <-- YEH WALI LINE SABSE UPAR ADD KARNI HAI
 import { NextResponse } from 'next/server';
 import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getAuth as getAdminAuth } from 'firebase-admin/auth';

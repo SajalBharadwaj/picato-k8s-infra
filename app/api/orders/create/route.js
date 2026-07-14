@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'; // <-- YEH WALI LINE SABSE UPAR LIKH DO
 import { NextResponse } from 'next/server';
 import { createOrder, clearCart, getUserById } from '../../../../lib/firestore';
 import { sendOrderConfirmation } from '../../../../lib/emailService';

@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: picato-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/mnt/data"
+  # Target bind strict validation
+  claimRef:
+    namespace: picato-prod
+    name: picato-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: picato-pvc
+  namespace: picato-prod
+  labels:
+    app: picato
+spec:
+  storageClassName: manual
+  volumeName: picato-pv
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

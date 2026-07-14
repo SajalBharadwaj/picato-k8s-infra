@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: picato-deployment 
+  namespace: picato-prod
+  labels:
+    app: picato
+spec:
+  replicas: 3
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: picato
+  template:
+    metadata:
+      labels:
+        app: picato
+    spec:
+      containers:
+      - name: picato-app
+        image: sajal30/picato-app:latest # <-- Tumhari Docker Hub wali image
+        imagePullPolicy: Always          # <-- Never se badalkar Always kar diya taaki download ho sak
+        ports:
+        - containerPort: 3000
+        # Container ke andar kis folder par storage mount karni hai
+        volumeMounts:
+        - name: picato-storage
+          mountPath: /app/public/uploads # Jaise images ya uploads folder ke liye
+        envFrom:
+        - configMapRef:
+            name: picato-config
+        - secretRef:
+            name: picato-secret
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "64Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+      # PVC ko deployment block ke sath link karna
+      volumes:
+      - name: picato-storage
+        persistentVolumeClaim:
+          claimName: picato-pvc

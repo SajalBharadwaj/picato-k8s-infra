@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: picato-config
+  namespace: picato-prod
+  labels:
+    app: picato
+data:
+  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: "picato-dummy.firebaseapp.com"
+  NEXT_PUBLIC_FIREBASE_PROJECT_ID: "picato-dummy"
+  NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: "picato-dummy.appspot.com"
+  NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: "1234567890"
+  NEXT_PUBLIC_FIREBASE_APP_ID: "1:1234567890:web:dummyappid123"
+  NEXT_TELEMETRY_DISABLED: "1"

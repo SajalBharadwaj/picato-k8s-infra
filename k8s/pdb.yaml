@@ -1,0 +1,12 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: picato-pdb
+  namespace: picato-prod  
+  labels:
+    app: picato
+spec:
+  minAvailable: 80% # Kisi bhi maintenance ke waqt 80% pods ka zinda rehna compulsory hai
+  selector:
+    matchLabels:
+      app: picato
