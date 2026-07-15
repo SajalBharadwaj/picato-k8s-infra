@@ -1,109 +1,434 @@
-# PICATO - Food Ordering Web Application
+# 🍔 PICATO - Cloud Native Food Ordering Platform
 
-A full-stack Next.js food ordering application featuring burgers and pizzas menu, Firebase authentication, Firestore database, and comprehensive admin dashboard with analytics.
+A production-ready **Cloud Native Food Ordering Platform** built with **Next.js 14**, **Firebase**, **Docker**, **Kubernetes**, **Jenkins**, **Argo CD**, **Terraform**, **Prometheus**, and **Grafana**.
 
-## Features
+---
 
-### Customer Features
-- Browse menu with category filtering (Burgers & Pizzas)
-- User authentication (signup/login)
-- Shopping cart with quantity management
-- Multiple payment options (Stripe & PayPal)
-- Order confirmation and email notifications
+# 🚀 Project Overview
 
-### Admin Features
-- Separate admin authentication system
-- Dashboard with real-time statistics
-- Order management with search and filters
-- Full CRUD operations for menu items
-- Analytics with data visualization:
-  - Bar charts (weekly revenue, product sales)
-  - Pie chart (category distribution)
-  - Histogram (orders by time of day)
-- Top user of the month tracking
-- Weekly best sellers reports
+PICATO is a full-stack food ordering platform built using **Next.js App Router** with Firebase Authentication, Firestore Database, Stripe & PayPal integration, and a complete Admin Dashboard.
 
-### Super Admin Features
-- Create and manage admin accounts
-- Send automated welcome emails with credentials
-- Role-based access control
+The project is fully containerized using Docker, deployed on Kubernetes, automated through Jenkins CI/CD, managed with Argo CD GitOps, and provisioned using Terraform.
 
-## Technology Stack
+---
 
-- **Framework:** Next.js 14 (App Router)
-- **Styling:** Tailwind CSS
-- **Authentication:** Firebase Authentication
-- **Database:** Firebase Firestore
-- **Payment Processing:** Stripe & PayPal
-- **Email Service:** Nodemailer
-- **Charts:** Chart.js with react-chartjs-2
-- **Language:** JavaScript (Vanilla JS)
+# 🏗 Architecture
 
-## Prerequisites
+```text
+Developer
+    │
+    ▼
+GitHub Repository
+    │
+    ▼
+Jenkins CI/CD Pipeline
+    │
+    ├── Install Dependencies
+    ├── Build Application
+    ├── Build Docker Image
+    ├── Push Docker Image
+    ▼
+Docker Hub
+    │
+    ▼
+Argo CD
+    │
+    ▼
+Kubernetes Cluster
+    │
+    ├── Deployment
+    ├── Service
+    ├── Ingress
+    ├── ConfigMap
+    ├── Secret
+    ├── HPA
+    ├── RBAC
+    ├── PVC
+    └── Monitoring
+```
 
-Before you begin, ensure you have:
-- Node.js 18+ installed
-- Firebase account
-- Stripe account (test mode)
-- PayPal developer account
-- Email service credentials (Gmail recommended)
+---
 
-## Installation
+# ✨ Features
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+## 👤 Customer
 
-2. **Set up environment variables:**
+* User Registration & Login
+* Firebase Authentication
+* Browse Burgers & Pizzas
+* Shopping Cart
+* Stripe Payment
+* PayPal Payment
+* Order Confirmation
+* Email Notifications
 
-   Copy `.env.local.example` to `.env.local` and fill in your credentials
+## 👨‍💻 Admin
 
-## Firebase Setup
+* Admin Dashboard
+* Menu CRUD
+* Order Management
+* Search & Filters
+* Weekly Revenue Analytics
+* Product Analytics
+* Best Seller Reports
 
-### 1. Create Firebase Project
-1. Go to [Firebase Console](https://console.firebase.google.com/)
-2. Create a new project named "PICATO"
-3. Enable Firebase Authentication (Email/Password provider)
+## 👑 Super Admin
 
-### 2. Create Firestore Database
-1. Go to Firestore Database and create database
-2. Set up security rules from planning.md
+* Admin Management
+* Create Admin Accounts
+* Role-Based Access Control
+* Welcome Email Automation
 
-### 3. Create Initial Super Admin
-1. Add user in Firebase Authentication
-2. Create corresponding document in `users` collection with role: "super_admin"
+---
 
-## Running the Application
+# ⚙ DevOps Features
+
+* Docker Containerization
+* Kubernetes Deployment
+* Jenkins CI/CD Pipeline
+* Argo CD GitOps
+* Terraform Infrastructure as Code
+* Horizontal Pod Autoscaler (HPA)
+* ConfigMap
+* Secrets
+* RBAC
+* NetworkPolicy
+* Persistent Volume
+* ServiceMonitor
+* Prometheus Monitoring
+* Grafana Dashboard
+
+---
+
+# 🛠 Tech Stack
+
+| Category         | Technology              |
+| ---------------- | ----------------------- |
+| Frontend         | Next.js 14              |
+| Styling          | Tailwind CSS            |
+| Authentication   | Firebase Authentication |
+| Database         | Firestore               |
+| Payment          | Stripe, PayPal          |
+| Containerization | Docker                  |
+| Orchestration    | Kubernetes              |
+| CI/CD            | Jenkins                 |
+| GitOps           | Argo CD                 |
+| Infrastructure   | Terraform               |
+| Monitoring       | Prometheus & Grafana    |
+
+---
+
+# 📋 Prerequisites
+
+Install the following software before running the project.
+
+| Tool           | Download                                                   |
+| -------------- | ---------------------------------------------------------- |
+| Git            | https://git-scm.com/downloads                              |
+| Node.js (18+)  | https://nodejs.org                                         |
+| Docker Desktop | https://www.docker.com/products/docker-desktop             |
+| kubectl        | https://kubernetes.io/docs/tasks/tools/                    |
+| Minikube       | https://minikube.sigs.k8s.io/docs/start/                   |
+| Helm           | https://helm.sh/docs/intro/install/                        |
+| Jenkins        | https://www.jenkins.io/download/                           |
+| Terraform      | https://developer.hashicorp.com/terraform/downloads        |
+| Argo CD CLI    | https://argo-cd.readthedocs.io/en/stable/cli_installation/ |
+
+---
+
+# ⚡ Quick Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/SajalBharadwaj/picato-k8s-infra.git
+
+cd picato-k8s-infra
+```
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+## Create Environment File
+
+```bash
+cp .env.local.example .env.local
+```
+
+Update your Firebase, Stripe, PayPal and Email credentials inside `.env.local`.
+
+## Run Project
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+Application URL
 
-## Key Routes
+```
+http://localhost:3000
+```
 
-### Customer Routes
-- `/` - Home page
-- `/menu` - Browse menu
-- `/cart` - Shopping cart
-- `/checkout` - Payment & checkout
+---
 
-### Admin Routes
-- `/admin-login` - Admin login
-- `/admin/dashboard` - Admin dashboard
-- `/admin/orders` - Order management
-- `/admin/menu` - Menu management
-- `/admin/analytics` - Analytics & charts
-- `/admin/admins` - Admin management (super admin only)
+# 📂 Project Structure
 
-## Test Payments
+```text
+app/
+components/
+context/
+lib/
+utils/
 
-**Stripe Test Card:** `4242 4242 4242 4242` (any future expiry, any CVC)
+Dockerfile
+Jenkinsfile
 
-**PayPal:** Use sandbox accounts from PayPal Developer Portal
+k8s/
+terraform/
+argocd/
+monitoring/
 
-## Support
+README.md
+```
 
-For setup instructions and troubleshooting, refer to planning.md documentation.
+---
+
+# 🐳 Docker
+
+Build Image
+
+```bash
+docker build -t picato .
+```
+
+Run Container
+
+```bash
+docker run -p 3000:3000 picato
+```
+
+Push Image
+
+```bash
+docker tag picato YOUR_DOCKER_USERNAME/picato
+
+docker push YOUR_DOCKER_USERNAME/picato
+```
+
+---
+
+# ☸ Kubernetes
+
+Create Namespace
+
+```bash
+kubectl apply -f k8s/namespace.yaml
+```
+
+Deploy Application
+
+```bash
+kubectl apply -f k8s/
+```
+
+Verify
+
+```bash
+kubectl get pods
+
+kubectl get svc
+
+kubectl get ingress
+```
+
+---
+
+# 🔄 Jenkins Pipeline
+
+Pipeline Flow
+
+```text
+Checkout Source Code
+        │
+        ▼
+Install Dependencies
+        │
+        ▼
+Build Next.js Application
+        │
+        ▼
+Docker Build
+        │
+        ▼
+Docker Push
+        │
+        ▼
+Update Kubernetes Manifest
+        │
+        ▼
+Git Push
+        │
+        ▼
+Argo CD Sync
+```
+
+---
+
+# 🚀 Argo CD
+
+Install
+
+```bash
+kubectl create namespace argocd
+
+kubectl apply -n argocd \
+-f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+
+Deploy Application
+
+```bash
+kubectl apply -f argocd/application.yaml
+```
+
+Sync
+
+```bash
+argocd app sync picato
+```
+
+---
+
+# 🌍 Terraform
+
+Initialize
+
+```bash
+terraform init
+```
+
+Plan
+
+```bash
+terraform plan
+```
+
+Apply
+
+```bash
+terraform apply
+```
+
+Destroy Infrastructure
+
+```bash
+terraform destroy
+```
+
+---
+
+# 📊 Monitoring
+
+Install Prometheus & Grafana
+
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+helm repo update
+
+helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack
+```
+
+Access Grafana
+
+```bash
+kubectl port-forward svc/kube-prometheus-stack-grafana 3000:80
+```
+
+Open
+
+```
+http://localhost:3000
+```
+
+---
+
+# 📈 CI/CD Workflow
+
+```text
+Developer
+     │
+     ▼
+GitHub Repository
+     │
+     ▼
+Jenkins
+     │
+     ▼
+Docker Build & Push
+     │
+     ▼
+Argo CD
+     │
+     ▼
+Kubernetes
+     │
+     ▼
+Prometheus
+     │
+     ▼
+Grafana
+```
+
+---
+
+# 🚀 Future Improvements
+
+* Helm Charts
+* AWS EKS Deployment
+* Blue-Green Deployment
+* Canary Deployment
+* SonarQube Integration
+* Trivy Image Scanning
+* Loki Logging
+* Elasticsearch
+* Kibana
+* Multi-Environment Deployment
+
+---
+
+# 💻 Skills Demonstrated
+
+* Next.js
+* Firebase Authentication
+* Firestore
+* Docker
+* Kubernetes
+* Jenkins
+* Argo CD
+* Terraform
+* GitOps
+* CI/CD
+* Infrastructure as Code
+* Prometheus
+* Grafana
+* Monitoring & Observability
+
+---
+
+# 👨‍💻 Author
+
+**Sajal Sharma**
+
+**GitHub:** https://github.com/SajalBharadwaj
+
+**LinkedIn:** https://www.linkedin.com/in/sajal-sharma-778709258
+
+**Repository:** https://github.com/SajalBharadwaj/picato-k8s-infra
+
+---
+
+⭐ **If you found this project useful, please consider giving it a Star.**
