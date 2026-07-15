@@ -9,6 +9,7 @@ metadata:
     volume.beta.kubernetes.io/storage-provisioner: "kubernetes.io/no-provisioner"
 spec:
   storageClassName: manual # Yeh exact matching PV se connect karega
+  volumeName: picato-pv    # <--- YEH LINE YAHAN JOD DO
   accessModes:
     - ReadWriteOnce
   resources:
